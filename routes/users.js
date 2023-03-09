@@ -87,7 +87,7 @@ router.put("/:id", (req, res) => {
   if (!user) {
     return res.status(404).json({
       success: false,
-      message: "User exixts",
+      message: "User does not exists",
     });
   }
   const updateUsersData = users.map((each) => {
