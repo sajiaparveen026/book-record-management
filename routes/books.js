@@ -113,7 +113,7 @@ router.post("/", (req, res) => {
      Access : public
      Parameters : id
 */
-router.put("/:id", (req, res) => {
+router.put("/updateBook/:id", (req, res) => {
   const { id } = req.params;
   const { data } = req.body;
 
@@ -133,10 +133,10 @@ router.put("/:id", (req, res) => {
     }
   });
   return res.status(200).json({
-    success:true,
-    message:"Information Updated",
-    data:updatedBookdata
-  })
+    success: true,
+    message: "Information Updated",
+    data: updatedBookdata,
+  });
 });
 
 module.exports = router;

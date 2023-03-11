@@ -133,4 +133,44 @@ router.delete("/:id", (req, res) => {
   });
 });
 
+/*
+     Route : /users/subscriptionDetails/:id
+     Method : get
+     Description :Get all users subscription details
+     Access : public
+     Parameters : id
+*/
+
+router.get("/subscriptionDetails/:id", (req, res) => {
+  const { id } = req.params;
+  const user = users.find((each) => each.id == id);
+
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User with ID does not exist",
+    });
+
+    const getDateInDays = (data = "") => {
+      let date;
+      if (data === "") {
+        date = new Date();
+      } else {
+        date = new Date(data);
+      }
+      let days = Math.floor(data / (1000 * 60 * 60 * 24));
+      return days;
+    };
+    const subscriptionType = (date) => {
+      if (users.subscriptionType == "Basic") {
+        date = date + 90;
+      } else if (users.subscriptionType == "Standard") {
+        date = date + 180;
+      } else if (users.subscriptionType == "Premium") {
+        date = date + 365;
+      }
+   return date;
+    };
+  }
+});
 module.exports = router;
