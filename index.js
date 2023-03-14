@@ -1,9 +1,11 @@
 const express = require("express");
+const app = express();
 
+//import routes
 const userRouter = require(`./routes/users.js`);
 const bookRouter = require("./routes/books");
 
-const app = express();
+
 const PORT = 8081;
 
 app.use(express.json());
